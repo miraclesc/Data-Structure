@@ -13,41 +13,31 @@
  * @param {string} num
  * @param {number} k
  * @return {string}
- */
+**/
 var removeKdigits = function(num, k) {
     //使当前位与后剩余k位比较 使当前位尽可能的小
-    var index = 0;
-    var stack = [];
-    var stack_del = [];
-    var current_index = 0;
-    var flag = 0;
-    var all = k;
-    while(index < num.length && k > 0){
-        flag = 0
+    var index = 0, current_index= 0, stack = [],k_ori = k;
+    while(index < num.length){
         current_index = 0;
         current = num.charAt(index);
         stack.push(current);
+        //k位内最小值
         for(var i=1;i<=k;i++){
             if(num[index+i]<current){
                 stack.pop();
                 current = num[index+i];
-                stack.push(num[index+i]);
+                stack.push(current);
                 current_index = index+i;
-                flag = 1;
             }
         }
-        if(flag){
-            k = all - (current_index + 1 - stack.length);
+        if(current_index!=0){
+            k = k_ori - (current_index + 1 - stack.length);
             index = current_index + 1;
         }else{
             index++;
         }
     }
-    //未循环完 加入剩余部分
-    while(index < num.length){
-        stack.push(num[index++]);
-    }
-    //结尾单调导致数量过多未处理 如 123456789 这种情况
+    //结尾单调数量过多未处理 如 123456789 这种情况
     while(k > 0){
         stack.pop();
         k--;
