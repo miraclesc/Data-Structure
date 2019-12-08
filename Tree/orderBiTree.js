@@ -4,7 +4,10 @@ function TreeNode(val) {
   this.left = null;
   this.right = null;
 }
-
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
 //先序遍历
 var preorderTraversal = function(root) {
     var node = [];
@@ -47,3 +50,27 @@ var inorderTraversal = function(root) {
 };
 
 //后序遍历
+var postorderTraversal = function(root) {
+    var node = [];
+    var stack = [], top = 0, r = null, temp;
+    stack.push(root);
+    while(top!=-1){
+        while(stack[top]){
+            stack.push(stack[top].left);
+            top++;
+        }
+        stack.pop();
+        top--;
+        if(top!=-1){
+            if(stack[top].right && stack[top].right!=r){
+                stack.push(stack[top].right);
+                top++;
+            }else{
+                r = stack.pop()
+                node.push(r.val);
+                stack.push(null);
+            }
+        }
+    }
+    return node;
+};
