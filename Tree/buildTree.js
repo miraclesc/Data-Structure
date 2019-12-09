@@ -5,7 +5,16 @@ function TreeNode(val) {
     this.left = null;
     this.right = null;
 }
-
+/**
+ * @param {number[]} inorder        [3,9,20,15,7]
+ * @param {number[]} postorder      [9,3,15,20,7]
+ * @return {TreeNode}
+    3
+   / \
+  9  20
+    /  \
+   15   7
+ */
 var buildTree = function(preorder, inorder) {
     var pre_index = 0;
     var helper = function(in_left, in_right){
