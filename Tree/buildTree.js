@@ -30,3 +30,4 @@ var buildTree = function(preorder, inorder) {
     }
     return helper(0, inorder.length);
 };
+//后序与中序遍历序列构造二叉树时 pre_index从后序length-1开始 每次减1 先生成 root.right 再生成root.left  
