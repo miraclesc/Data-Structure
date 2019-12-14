@@ -18,7 +18,7 @@
 /**
  * @param {number} numCourses
  * @param {number[][]} prerequisites
- * @return {boolean}
+ * @return {number[]}
  */
 var findOrder = function(numCourses, prerequisites) {
     //先用邻接表(对象)表示图的结构 数组存储入度 用拓扑排序的方法填入课程顺序
