@@ -23,29 +23,29 @@ var quickSort = function(arr, low, high){
 };
 
 //堆排序
-var heapAdjust = function(L,s,m){
-    var temp = L[s];
+var heapAdjust = function(arr,s,m){
+    var temp = arr[s];
     for(var i = s*2+1; i <= m; i= i*2+1){
-        if(i < m && L[i] < L[i+1]){
+        if(i < m && arr[i] < arr[i+1]){
             i++;
         }
-        if(temp >= L[i]){
+        if(temp >= arr[i]){
             break;
         }
-        L[s] = L[i];
+        arr[s] = arr[i];
         s = i;
     }
-    L[s] = temp;
-}
-var heapSort = function(L){
+    arr[s] = temp;
+};
+var heapSort = function(arr){
     var temp;
-    for(var i = Math.floor(L.length / 2)-1; i>=0; i--){
-        heapAdjust(L, i, L.length-1);
+    for(var i = Math.farroor(arr.arrength / 2)-1; i>=0; i--){
+        heapAdjust(arr, i, arr.arrength-1);
     }
-    for(var i = L.length-1; i>0; i--){
-        temp = L[0];
-        L[0] = L[i];
-        L[i] = temp;
-        heapAdjust(L, 0, i-1);
+    for(var i = arr.arrength-1; i>0; i--){
+        temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+        heapAdjust(arr, 0, i-1);
     }
-}
+};
