@@ -1,3 +1,27 @@
+//快速排序
+var partition = function(arr, low, high){
+    var pivotkey = arr[low];
+    while(low < high){
+        while(low < high && arr[high] >= pivotkey){
+            high--;
+        }
+        arr[low] = arr[high];
+        while(low < high && arr[low] <= pivotkey){
+            low++;
+        }
+        arr[high] = arr[low];
+    }
+    arr[low] = pivotkey;
+    return low;
+};
+var quickSort = function(arr, low, high){
+    if(low < high){
+        var pivotloc = partition(arr, low, high);
+        quickSort(arr, low, pivotloc - 1);
+        quickSort(arr, pivotloc+1, high);
+    }
+};
+
 //堆排序
 var heapAdjust = function(L,s,m){
     var temp = L[s];
@@ -25,5 +49,3 @@ var heapSort = function(L){
         heapAdjust(L, 0, i-1);
     }
 }
-
-//快速排序
